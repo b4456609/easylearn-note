@@ -1,0 +1,13 @@
+version: '2'
+services:
+  easylearn-note-service:
+    build: .
+    ports:
+     - "8086:8080"
+     - "8087:8081"
+    links:
+      - notedb
+  notedb:
+    image: mongo
+    ports:
+     - "27020:27017"
