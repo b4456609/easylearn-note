@@ -3,6 +3,7 @@
  */
 package ntou.bernie.easylearn.note.resource;
 
+import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,6 +44,7 @@ public class NoteResource {
     @GET
     @Path("/{versionId}")
     @Timed
+    @ExceptionMetered
     public List<Note> getNote(@PathParam("versionId") String versionId) {
         List<Note> note = noteDAO.getNotesByVersionId(versionId);
         if (note == null)
@@ -76,6 +78,7 @@ public class NoteResource {
     @POST
     @Path("/sync")
     @Timed
+    @ExceptionMetered
     public Response syncNotes(String packsJson) {
         try {
             LOGGER.debug(packsJson);

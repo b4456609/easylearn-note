@@ -1,5 +1,6 @@
 package ntou.bernie.easylearn.note.resource;
 
+import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +30,7 @@ public class CommentResource {
 
     @GET
     @Timed
+    @ExceptionMetered
     public List<Comment> getCommentByNoteId(@PathParam("noteId") String noteId) {
         List<Comment> comments = noteDAO.getCommentsByNoteId(noteId);
         if (comments == null) {
@@ -39,6 +41,7 @@ public class CommentResource {
 
     @POST
     @Timed
+    @ExceptionMetered
     public Response addComment(@PathParam("noteId") String noteId, String commentJson) {
         if (commentJson == null)
             throw new WebApplicationException(400);
