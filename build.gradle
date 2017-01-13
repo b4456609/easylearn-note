@@ -31,6 +31,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+	compile files('/home/bernie/project/easylearn/mca/build/libs/mca-all.jar')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
